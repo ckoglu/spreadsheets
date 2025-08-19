@@ -34,7 +34,8 @@ footer{text-align: center;padding-top: 1rem;color: var(--text-light);margin-top:
 footer p {margin:0;}
 @media (max-width:768px){
   body{padding:0;}
-  header h1{font-size:2rem;border-radius: 0px;}
-  .card{padding:1.5rem;border-radius: 0px;}
+  header{border-radius: 0;}
+  header h1{font-size:2rem;border-radius: 0;}
+  .card{padding:1.5rem;border-radius: 0;}
   .nav a{width:100%;text-align:center}
 }
