@@ -1,0 +1,115 @@
+function getGitHubInfo() {
+    const hostParts = location.hostname.split(".");
+    let userName = "";
+    let repo = "";
+
+    if (hostParts.length >= 3 && hostParts[1] === "github" && hostParts[2] === "io") {
+        userName = hostParts[0];
+        const pathname = location.pathname.split("/").filter(Boolean);
+        repo = pathname.length > 0 ? pathname[0] : "";
+    } else {
+        userName = "ckoglu";
+        repo = "spreadsheets";
+    }
+    return { userName, repo };
+}
+
+function extractSheetIdFromUrl(url) {
+    const startIndex = url.indexOf('/d/') + 3;
+    const endIndex = url.indexOf('/', startIndex);
+    if (endIndex === -1) {return url.substring(startIndex);}
+    return url.substring(startIndex, endIndex);
+}
+
+function openApiUrl() {
+    const sheetId = extractSheetIdFromUrl(document.getElementById("sheetId").value.trim());
+    const sheetName = document.getElementById("sheetName").value.trim();
+    if (!sheetId || !sheetName) {alert("Lütfen Sheet ID ve Sheet Name giriniz.");return;}
+    const { userName, repo } = getGitHubInfo();
+    console.log(userName);
+    console.log(repo);
+    if (!userName || !repo) {alert("Geçerli GitHub Pages ortamında çalıştırılmıyor!");return;}
+    window.open(`https://${repo}.${userName}.workers.dev/${sheetId}/${sheetName}?`, "_blank");
+}
+
+// Ortak güncelleme fonksiyonu
+function updateAllElements() {
+    const sheetIdValue = extractSheetIdFromUrl(document.getElementById("sheetId").value.trim());
+    const sheetNameValue = document.getElementById("sheetName").value.trim();
+    
+    // tüm .example code elementlerini güncelle
+    const codeElements = document.querySelectorAll('.example code');
+    codeElements.forEach(stringEl => {
+        const originalExample = stringEl.getAttribute('data-original') || stringEl.textContent;
+        if (!stringEl.hasAttribute('data-original')) {
+            stringEl.setAttribute('data-original', originalExample);
+        }
+        
+        let updatedText = originalExample;
+        if (sheetIdValue) {
+            updatedText = updatedText.replace(/\[SHEET_ID\]|sheetId/g, sheetIdValue);
+        }
+        if (sheetNameValue) {
+            updatedText = updatedText.replace(/\[SHEET_NAME\]|sheetName/g, sheetNameValue);
+        }
+        stringEl.textContent = updatedText;
+    });
+    
+    // prefix elementlerini güncelle
+    const prefixElements = document.querySelectorAll('[id^="prefix"]');
+    prefixElements.forEach(element => {
+        const originalText = element.getAttribute('data-original') || element.textContent;
+        if (!element.hasAttribute('data-original')) {
+            element.setAttribute('data-original', originalText);
+        }
+        
+        let updatedText = originalText;
+        if (sheetIdValue) {
+            updatedText = updatedText.replace(/\[SHEET_ID\]/g, sheetIdValue);
+        }
+        if (sheetNameValue) {
+            updatedText = updatedText.replace(/\[SHEET_NAME\]/g, sheetNameValue);
+        }
+        element.textContent = updatedText;
+    });
+}
+
+
+// Input event listener'ları
+const sheetId = document.getElementById("sheetId");
+sheetId.addEventListener("input", updateAllElements);
+
+const sheetName = document.getElementById("sheetName");
+sheetName.addEventListener("input", updateAllElements);
+
+window.addEventListener("load", async () => {
+    let newUrl;
+    if (location.pathname.endsWith("index.html")) {
+        newUrl = `${location.origin}${location.pathname.replace(/index\.html$/, '')}`;
+    } else if (location.pathname.endsWith('/')) {
+        newUrl = `${location.origin}${location.pathname}`;
+    } else {
+        newUrl = `${location.origin}${location.pathname}/`;
+    }
+    history.replaceState({}, "", newUrl);
+
+    const { userName, repo } = getGitHubInfo();
+    const prefixUrl = `https://${repo}.${userName}.workers.dev/`;
+
+    // prefix alanını güncelle
+    document.getElementById('prefix').textContent = `${prefixUrl}[SHEET_ID]/[SHEET_NAME]?params`;
+
+    // sayfadaki tüm .example içindeki <code> etiketlerini güncelle
+    document.querySelectorAll(".example code").forEach(el => {
+        el.innerText = el.innerText.replace(/https:\/\/api\.example\.com\//g, prefixUrl);
+    });
+
+    // Orijinal değerleri sakla ve ilk güncellemeyi yap
+    document.querySelectorAll('.example code, [id^="prefix"]').forEach(el => {
+        if (!el.hasAttribute('data-original')) {
+            el.setAttribute('data-original', el.textContent);
+        }
+    });
+    
+    updateAllElements(); // Sayfa yüklendiğinde bir kere çalıştır
+});
