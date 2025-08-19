@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets REST API</title>
+    <meta name="description" content="Google Sheets tablolarınızı REST API'ye dönüştürün">
+    <meta name="keywords" content="google, sheets, spreads, rest, api, json, e-tablo, docs">
+    <meta name="author" content="ckoglu">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/75999325">
+    <meta name="theme-color" content="#fff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="./"><h1>Spreadsheets API</h1></a>
+            <p>Google Sheets tablolarınızı REST API'ye dönüştürün</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav">
+            <a href="#get-api">GET</a>
+            <a href="#bilgi">Bilgi</a>
+            <a href="#kur">Kurulum</a>
+            <a href="#parametreler">Parametreler</a>
+            <a href="#ornekler">Örnekler</a>
+            <a href="#yanit-formatı">Yanıt Formatı</a>
+        </div>
+
+        <section id="get-api" class="card">
+            <h2>GET API</h2>
+            <input type="text" id="sheetId" placeholder="https://docs.google.com/spreadsheets/d/...">
+            <input type="text" id="sheetName" placeholder="sheet name">
+            <button class="rbtn" onclick="openApiUrl()">GET</button>
+        </section>
+
+        <section id="bilgi" class="card">
+            <h2>Bilgi</h2>
+            <p>Bu sistem, Google Sheets tablolarınızı REST API'ye dönüştürür ve çeşitli filtreleme, sıralama ve sayfalama özellikleri sunar.</p>
+            <pre><code id="prefix">https://your-worker.url/[SHEET_ID]/[SHEET_NAME]?params</code></pre>
+        </section>
+
+        <section id="kur" class="card">
+            <h2>Kurulum</h2>
+            <p>Google e-tablolarını <a target="_blank" href="https://docs.google.com/spreadsheets/u/0/">https://docs.google.com/spreadsheets/u/0/</a> adresinden yönetebilirsiniz. Verilerin JSON formatında fetch edilebilmesi için aşağıdaki ayarları yapın;</p>
+            <pre><code>dosya -&gt; paylaş -&gt; başkalarıyla paylaş -&gt; genel erişim -&gt; herkes</code></pre>
+            <pre><code>dosya -&gt; paylaş -&gt; webde yayınla -&gt; yayınla (dokümanın tamamı)</code></pre>
+        </section>
+
+        <section id="parametreler" class="card">
+            <h2>Parametre Referansı</h2>
+            
+            <h3>Sütun İşlemleri</h3>
+            <table>
+                <tr>
+                    <th>Parametre</th>
+                    <th>Açıklama</th>
+                    <th>Örnek</th>
+                </tr>
+                <tr>
+                    <td><code>sutunlar</code></td>
+                    <td>Tüm sütun isimlerini listeler</td>
+                    <td><code>?sutunlar=1</code></td>
+                </tr>
+                <tr>
+                    <td><code>sutun</code></td>
+                    <td>Sadece belirtilen sütunları gösterir</td>
+                    <td><code>?sutun=baslik,yazar</code></td>
+                </tr>
+            </table>
+            
+            <h3>Filtreleme Parametreleri</h3>
+            <table>
+                <tr>
+                    <th>Parametre</th>
+                    <th>Açıklama</th>
+                    <th>Örnek</th>
+                </tr>
+                <tr>
+                    <td><code>date</code></td>
+                    <td>Tarih filtreleme (yeni, eski, tarih, yıl)</td>
+                    <td><code>?date=tarih:03.01.2025</code></td>
+                </tr>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>Etiket filtreleme</td>
+                    <td><code>?tag=etiket:nodejs</code></td>
+                </tr>
+                <tr>
+                    <td><code>time</code></td>
+                    <td>Saat filtreleme</td>
+                    <td><code>?time=saat:14:30</code></td>
+                </tr>
+                <tr>
+                    <td><code>[sütun_adi]</code></td>
+                    <td>Doğrudan sütun filtreleme</td>
+                    <td><code>?yazar=Ahmet</code></td>
+                </tr>
+            </table>
+            
+            <h3>Arama ve Sıralama</h3>
+            <table>
+                <tr>
+                    <th>Parametre</th>
+                    <th>Açıklama</th>
+                    <th>Örnek</th>
+                </tr>
+                <tr>
+                    <td><code>ara</code></td>
+                    <td>Tüm sütunlarda arama (joker karakterlerle)</td>
+                    <td><code>?ara=*js</code></td>
+                </tr>
+                <tr>
+                    <td><code>sirala</code></td>
+                    <td>Sıralama yönü (az veya za)</td>
+                    <td><code>?sirala=az</code></td>
+                </tr>
+            </table>
+            
+            <h3>Sayfalama</h3>
+            <table>
+                <tr>
+                    <th>Parametre</th>
+                    <th>Açıklama</th>
+                    <th>Örnek</th>
+                </tr>
+                <tr>
+                    <td><code>limit</code></td>
+                    <td>Sayfa başına kayıt sayısı</td>
+                    <td><code>?limit=10</code></td>
+                </tr>
+                <tr>
+                    <td><code>sayfa</code></td>
+                    <td>Sayfa numarası</td>
+                    <td><code>?sayfa=2</code></td>
+                </tr>
+            </table>
+            
+            <h3>Diğer Parametreler</h3>
+            <table>
+                <tr>
+                    <th>Parametre</th>
+                    <th>Açıklama</th>
+                    <th>Örnek</th>
+                </tr>
+                <tr>
+                    <td><code>debug</code></td>
+                    <td>Debug bilgilerini göster</td>
+                    <td><code>?debug=1</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="ornekler" class="card">
+            <h2>Örnekler</h2>
+            <div class="example">
+                <b>Temel Liste</b>
+                <pre><code>https://api.example.com/sheetId/sheetName</code></pre>
+            </div>
+            <div class="example">
+                <b>Filtreli Liste</b>
+                <pre><code>https://api.example.com/sheetId/sheetName?yazar=Ahmet&tarih=*2024*</code></pre>
+            </div>
+            <div class="example">
+                <b>Sıralı ve Sayfalanmış</b>
+                <pre><code>https://api.example.com/sheetId/sheetName?sirala=yeni&limit=5&sayfa=2</code></pre>
+            </div>
+            <div class="example">
+                <b>Özel Sütunlarla</b>
+                <pre><code>https://api.example.com/sheetId/sheetName?sutun=baslik,tarih&ara=*js</code></pre>
+            </div>
+            <div class="example">
+                <b>Etiket Filtreli</b>
+                <pre><code>https://api.example.com/sheetId/sheetName?tag=etiket:react</code></pre>
+            </div>
+        </section>
+
+        <section id="yanit-formatı" class="card">
+            <h2>JSON Yanıt Formatı</h2>
+            <pre><code>{
+  "total": [NUMBER],
+  "sayfa": [NUMBER],
+  "limit": [NUMBER],
+  "results": [
+    {
+      "head1": "value1",
+      "head2": "value2"
+    },
+    ...
+  ]
+}</code></pre>
+        </section>
+    </div>
+
+    <footer>
+        <p>Google Sheets REST API Dokümantasyonu &copy; 2025 | <a href="https://github.com/ckoglu" target="_blank">github.com/ckoglu</a></p>
+    </footer>
+    <script src="./api.js"></script>
+</body>
+</html>
