@@ -16,8 +16,8 @@ section{margin-bottom:2rem}
 .card{background-color:var(--white);border-radius:12px;padding:2rem;box-shadow:var(--card-shadow);margin-bottom:1.5rem}
 h2{font-size:1.1rem;color:var(--primary);margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:0px solid var(--border)}
 h3{font-size:1rem;color:var(--text);margin:1.5rem 0 1rem 0}
-p{margin-bottom:1rem;color:var(--text-light)}
-code{font-family:'Fira Code','Courier New',monospace;background-color:var(--light-bg);padding:.2rem .4rem;border-radius:4px;color:var(--accent)}
+p{margin-bottom:1rem;color:var(--text-light);white-space: pre-wrap;word-wrap: break-word;}
+code{font-family:'Fira Code','Courier New',monospace;background-color:var(--light-bg);padding:.2rem .4rem;border-radius:4px;color:var(--accent);white-space: pre-wrap;word-wrap: break-word;}
 pre{background-color:var(--light-bg);padding:1rem;border-radius:8px;overflow-x:auto;margin:1rem 0}
 pre code{background:0 0;padding:0;color:var(--blue)}
 table{width:100%;border-collapse:collapse;margin:1rem 0}
@@ -33,8 +33,8 @@ button:hover{background-color:var(--primary-dark)}
 footer{text-align: center;padding-top: 1rem;color: var(--text-light);margin-top: 1rem;}
 footer p {margin:0;}
 @media (max-width:768px){
-  header h1{font-size:2rem}
-  .card{padding:1.5rem}
-  .nav{flex-direction:column;align-items:center}
+  body{padding:0;}
+  header h1{font-size:2rem;border-radius: 0;}
+  .card{padding:1.5rem;border-radius: 0;}
   .nav a{width:100%;text-align:center}
 }
