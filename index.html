@@ -69,7 +69,7 @@
             <tr>
               <td><code>sutun</code></td>
               <td>Sadece belirtilen sütunları gösterir (virgülle ayırarak).</td>
-              <td><code>?sutun=baslik,yazar</code></td>
+              <td><code>?&lt;sutun_adi&gt;=&lt;veri&gt;,&lt;veri&gt;</code></td>
             </tr>
           </table>
           
@@ -83,17 +83,17 @@
             <tr>
               <td><code>date=&lt;sutun_adi&gt;:&lt;değer&gt;</code></td>
               <td>Tarih sütununda filtreleme yapar.</td>
-              <td><code>?date=tarih:03.01.2025</code></td>
+              <td><code>?date=&lt;sutun_adi&gt;:&lt;gg.aa.yyyy&gt;</code></td>
             </tr>
             <tr>
               <td><code>num=&lt;sutun_adi&gt;:&lt;değer&gt;</code></td>
               <td>Sayısal sütunda filtreleme yapar.</td>
-              <td><code>?num=yas:30</code></td>
+              <td><code>?num=&lt;sutun_adi&gt;:&lt;X&gt;</code></td>
             </tr>
             <tr>
               <td><code>tag=&lt;sutun_adi&gt;:&lt;değer&gt;</code></td>
               <td>Belirtilen sütundaki etiketlere göre filtreleme yapar.</td>
-              <td><code>?tag=etiket:nodejs</code></td>
+              <td><code>?tag=&lt;sutun_adi&gt;:&lt;veri&gt;</code></td>
             </tr>
             <tr>
               <td><code>time=&lt;sutun_adi&gt;:&lt;değer&gt;</code></td>
@@ -112,62 +112,62 @@
             <tr>
               <td><code>bugun</code></td>
               <td>Bugünkü kayıtları getirir</td>
-              <td><code>date=tarih:bugun</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:bugun</code></td>
             </tr>
             <tr>
               <td><code>dun</code></td>
               <td>Dünkü kayıtları getirir</td>
-              <td><code>date=tarih:dun</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:dun</code></td>
             </tr>
             <tr>
               <td><code>hafta</code></td>
               <td>Son 1 haftadaki kayıtları getirir</td>
-              <td><code>date=tarih:hafta</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:hafta</code></td>
             </tr>
             <tr>
               <td><code>ay</code></td>
               <td>Son 1 aydaki kayıtları getirir</td>
-              <td><code>date=tarih:ay</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:ay</code></td>
             </tr>
             <tr>
               <td><code>yil</code></td>
               <td>Son 1 yıldaki kayıtları getirir</td>
-              <td><code>date=tarih:yil</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:yil</code></td>
             </tr>
             <tr>
               <td><code>yeni</code></td>
               <td>En yeni kayıtları sıralar</td>
-              <td><code>date=tarih:yeni</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:yeni</code></td>
             </tr>
             <tr>
               <td><code>eski</code></td>
               <td>En eski kayıtları sıralar</td>
-              <td><code>date=tarih:eski</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:eski</code></td>
             </tr>
             <tr>
               <td><code>DD.MM.YYYY</code></td>
               <td>Belirli bir tarihten itibaren kayıtları getirir</td>
-              <td><code>date=tarih:03.01.2025</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:&lt;gg.aa.yyyy&gt;</code></td>
             </tr>
             <tr>
               <td><code>DD.MM.YYYY:DD.MM.YYYY</code></td>
               <td>Tarih aralığındaki kayıtları getirir</td>
-              <td><code>date=tarih:01.01.2025:31.01.2025</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:&lt;gg.aa.yyyy&gt;:&lt;gg.aa.yyyy&gt;</code></td>
             </tr>
             <tr>
               <td><code>*YYYY*</code></td>
               <td>Sadece YYYY yılındaki kayıtları getirir</td>
-              <td><code>date=tarih:*2024*</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:*&lt;yyyy&gt;*</code></td>
             </tr>
             <tr>
               <td><code>*YYYY</code></td>
               <td>YYYY yılından önceki kayıtları getirir</td>
-              <td><code>date=tarih:*2024</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:*&lt;yyyy&gt;</code></td>
             </tr>
             <tr>
               <td><code>YYYY*</code></td>
               <td>YYYY yılından sonraki kayıtları getirir</td>
-              <td><code>date=tarih:2024*</code></td>
+              <td><code>date=&lt;sutun_adi&gt;:&lt;yyyy&gt;*</code></td>
             </tr>
           </table>
           
@@ -181,42 +181,42 @@
             <tr>
               <td><code>kucuk</code></td>
               <td>Küçükten büyüğe sıralar</td>
-              <td><code>num=fiyat:kucuk</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:kucuk</code></td>
             </tr>
             <tr>
               <td><code>buyuk</code></td>
               <td>Büyükten küçüğe sıralar</td>
-              <td><code>num=fiyat:buyuk</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:buyuk</code></td>
             </tr>
             <tr>
               <td><code>ortalama</code></td>
               <td>Sütunun ortalamasını hesaplar</td>
-              <td><code>num=fiyat:ortalama</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:ortalama</code></td>
             </tr>
             <tr>
               <td><code>toplam</code></td>
               <td>Sütunun toplamını hesaplar</td>
-              <td><code>num=fiyat:toplam</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:toplam</code></td>
             </tr>
             <tr>
               <td><code>X:Y</code></td>
               <td>İki sayı arasındaki değerleri listeler</td>
-              <td><code>num=fiyat:100:200</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:&lt;X&gt;:&lt;Y&gt;</code></td>
             </tr>
             <tr>
               <td><code>*X*</code></td>
               <td>Sadece X sayısı değerlerini listeler</td>
-              <td><code>num=fiyat:*100*</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:*&lt;X&gt;*</code></td>
             </tr>
             <tr>
               <td><code>*X</code></td>
               <td>X sayısından küçük değerleri listeler</td>
-              <td><code>num=fiyat:*100</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:*&lt;X&gt;</code></td>
             </tr>
             <tr>
               <td><code>X*</code></td>
               <td>X sayısından büyük değerleri listeler</td>
-              <td><code>num=fiyat:100*</code></td>
+              <td><code>num=&lt;sutun_adi&gt;:&lt;X&gt;*</code></td>
             </tr>
           </table>
           
@@ -228,9 +228,9 @@
               <th>Örnek</th>
             </tr>
             <tr>
-              <td><code>&lt;etiket&gt;</code></td>
+              <td><code>tag</code></td>
               <td>Belirtilen etikete sahip kayıtları getirir</td>
-              <td><code>tag=kategori:teknoloji</code></td>
+              <td><code>tag=&lt;sutun_adi&gt;:&lt;veri&gt;</code></td>
             </tr>
           </table>
           
@@ -244,22 +244,22 @@
             <tr>
               <td><code>yeni</code></td>
               <td>En yeni saatleri sıralar</td>
-              <td><code>time=saat:yeni</code></td>
+              <td><code>time=&lt;sutun_adi&gt;:yeni</code></td>
             </tr>
             <tr>
               <td><code>eski</code></td>
               <td>En eski saatleri sıralar</td>
-              <td><code>time=saat:eski</code></td>
+              <td><code>time=&lt;sutun_adi&gt;:eski</code></td>
             </tr>
             <tr>
               <td><code>HH:MM</code></td>
               <td>Belirli bir saatten itibaren kayıtları getirir</td>
-              <td><code>time=saat:14:30</code></td>
+              <td><code>time=&lt;sutun_adi&gt;:&lt;SS:DD&gt;</code></td>
             </tr>
             <tr>
               <td><code>HH</code></td>
               <td>Belirli bir saat içeren kayıtları getirir</td>
-              <td><code>time=saat:14</code></td>
+              <td><code>time=&lt;sutun_adi&gt;:&lt;SS&gt;</code></td>
             </tr>
           </table>
           
@@ -271,9 +271,9 @@
               <th>Örnek</th>
             </tr>
             <tr>
-              <td><code>[sütun_adi]</code></td>
+              <td><code>&lt;sutun_adi&gt;</code></td>
               <td>Herhangi bir sütun adını parametre olarak kullanarak o sütunda doğrudan filtreleme yapar</td>
-              <td><code>?yazar=Ahmet</code></td>
+              <td><code>?&lt;sutun_adi&gt;=&lt;veri&gt;</code></td>
             </tr>
           </table>
           
@@ -287,17 +287,17 @@
             <tr>
               <td><code>ara</code></td>
               <td>Tüm sütunlarda metin araması yapar. Joker karakter (*) kullanılabilir</td>
-              <td><code>?ara=*js</code></td>
+              <td><code>?ara=*&lt;veri&gt;</code></td>
             </tr>
             <tr>
               <td><code>sirala=&lt;sutun_adi&gt;:az</code></td>
               <td>Sonuçları A-Z doğru sıralar</td>
-              <td><code>?sirala=ad:az</code></td>
+              <td><code>?sirala=&lt;sutun_adi&gt;:az</code></td>
             </tr>
             <tr>
               <td><code>sirala=&lt;sutun_adi&gt;:za</code></td>
               <td>Sonuçları Z-A doğru sıralar</td>
-              <td><code>?sirala=ad:za</code></td>
+              <td><code>?sirala=&lt;sutun_adi&gt;:za</code></td>
             </tr>
           </table>
           
