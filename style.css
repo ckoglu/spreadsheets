@@ -17,7 +17,7 @@ section{margin-bottom:2rem}
 h2{font-size:1.1rem;color:var(--primary);margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:0px solid var(--border)}
 h3{font-size:1rem;color:var(--text);margin:1.5rem 0 1rem 0}
 p{margin-bottom:1rem;color:var(--text-light);white-space: pre-wrap;word-wrap: break-word;}
-code{font-family: 'Fira Code', 'Courier New', monospace;background-color: var(--light-bg);padding: .2rem .4rem;border-radius: 4px;color: var(--accent);white-space: pre-wrap;word-break: break-word;overflow-wrap: anywhere;display: inline-block;max-width: 100%;box-sizing: border-box;}
+code{font-family: 'Fira Code', 'Courier New', monospace;background-color: var(--light-bg);padding: .2rem .4rem;border-radius: 4px;color: var(--accent);white-space: pre-wrap;word-break: break-word;overflow-wrap: anywhere;max-width: 100%;box-sizing: border-box;}
 pre{background-color:var(--light-bg);padding:1rem;border-radius:8px;overflow-x:auto;margin:1rem 0}
 pre code{background:0 0;padding:0;color:var(--blue)}
 table{width:100%;border-collapse:collapse;margin:1rem 0}
