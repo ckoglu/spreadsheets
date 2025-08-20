@@ -37,7 +37,7 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `sutunlar`  | Tüm sütun isimlerini JSON listesi olarak döner. | `?sutunlar=1`        |
 | `sutun`   | Sadece belirtilen sütunları gösterir (virgülle ayırarak). | `?sutun=<sutun_ad>,<sutun_ad>` |
 
-### Special Filtering Parametres
+### Özel Filtreleme Parametreleri
 
 | Parametre | Açıklama                        | Örnek                           |
 | :-------- | :--------------------------------- | :-------------------------------- |
@@ -46,7 +46,7 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `tag`     | Belirtilen sütundaki etiketlere göre filtreleme yapar. | `?tag=<sutun_ad>:<veri>`                |
 | `time`    | Saat sütununda filtreleme yapar.| `?time=<sutun_ad>:<saat>`                  |
 
-#### Date Parametre Values
+#### Date Parametre Değerleri
 
 | Value              | Açıklama                                  | Örnek                       |
 | :----------------- | :------------------------------------------- | :---------------------------- |
@@ -63,7 +63,7 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `*YYYY`            | YYYY yılından önceki kayıtları getirir | `date=<sutun_ad>:*<YYYY>`            |
 | `YYYY*`            | YYYY yılından sonraki kayıtları getirir  | `date=<sutun_ad>:<YYYY>*`            |
 
-#### Num Parametre Values
+#### Num Parametre Değerleri
 
 | Value     | Açıklama                      | Örnek                   |
 | :-------- | :------------------------------- | :------------------------ |
@@ -76,13 +76,13 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `*X`      | X sayısından küçük değerleri listeler | `num=<sutun_ad>:*<sayi>`           |
 | `X*`      | X sayısından büyük değerleri listeler | `num=<sutun_ad>:<sayi>*`            |
 
-#### Tag Parametre Values
+#### Tag Parametre Değerleri
 
 | Value    | Açıklama                         | Örnek                    |
 | :------- | :---------------------------------- | :------------------------- |
 | `<etiket>` | Belirtilen etikete sahip kayıtları getirir | `tag=<sutun_ad>:<veri>`   |
 
-#### Time Parametre Values
+#### Time Parametre Değerleri
 
 | Value | Açıklama                           | Örnek             |
 | :---- | :------------------------------------ | :------------------ |
@@ -91,13 +91,13 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `HH:MM`| Belirli bir saatten itibaren kayıtları getirir | `time=<sutun_ad>:<SS:DD>`   |
 | `HH`  | Belirli bir saat içeren kayıtları getirir | `time=<sutun_ad>:<SS>`      |
 
-### Direct Column Filtering
+### Doğrudan Sütun Filtreleme
 
 | Parametre     | Açıklama                                           | Örnek           |
 | :------------ | :---------------------------------------------------- | :---------------- |
 | `[sutun_adi]` | Herhangi bir sütun adını parametre olarak kullanarak o sütunda doğrudan filtreleme yapar | `?<sutun_ad>=<veri>`    |
 
-### Search and Sorting
+### Arama ve Sıralama
 
 | Parametre | Açıklama                                       | Örnek             |
 | :-------- | :------------------------------------------------ | :------------------ |
@@ -105,7 +105,7 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `sirala`  | Sonuçları Z-A doğru sıralar                       | `?sirala=<sutun_ad>:az`  |
 | `sirala`  | Sonuçları A-Z doğru sıralar                       | `?sirala=<sutun_ad>:za`  |
 
-### Pagination
+### Sayfalama
 
 | Parametre | Açıklama                                   | Örnek           |
 | :-------- | :-------------------------------------------- | :---------------- |
@@ -114,7 +114,7 @@ Verilerin JSON formatında çekilebilmesi için aşağıdaki iki ayarı belgeniz
 | `sayfa`   | ilk sayfa                     | `?sayfa=ilk`      |
 | `sayfa`   | Son sayfa                      | `?sayfa=son`      |
 
-### Other Parametres
+### Diğer Parametreler
 
 | Parametre | Açıklama                                       | Örnek       |
 | :-------- | :------------------------------------------------ | :------------ |
