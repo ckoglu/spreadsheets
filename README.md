@@ -42,6 +42,7 @@ https://spreadsheets.ckoglu.workers.dev/[SHEET_ID]/[SHEET_NAME]?params
 | Parametre | Açıklama | Örnek |
 | :--- | :--- | :--- |
 | `date` | Tarih sütununda filtreleme yapar. (`yeni`, `eski`, `dd.mm.yyyy`, `yyyy`) | `?date=tarih:03.01.2025` |
+| `num` | yas sütununda filtreleme yapar. (`yeni`, `eski`, `1`, `1*`, `*1*`, `*1`) | `?num=yas:30` |
 | `tag` | Belirtilen sütundaki etiketlere göre filtreleme yapar. | `?tag=etiket:nodejs` |
 | `time` | Saat sütununda filtreleme yapar. (`hh:mm`) | `?time=saat:14:30` |
 | `[sütun_adi]` | Herhangi bir sütun adını parametre olarak kullanarak o sütunda doğrudan filtreleme yapar. | `?yazar=Ahmet` |
