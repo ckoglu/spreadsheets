@@ -166,7 +166,7 @@ Verileri CSV formatında indirir.
 
 `https://spreadsheets.ckoglu.workers.dev/sheetId/sheetName?save=csv`
 
----
+
 
 ## 📄 JSON Yanıt Formatı
 
